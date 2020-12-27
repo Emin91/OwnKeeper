@@ -16,6 +16,15 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* OwnKeeperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* OwnKeeperTests.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		1628BD53FE9D4E66A7EC6BC1 /* BalooTwoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE72CA1B09BD413480926BA6 /* BalooTwoRegular.ttf */; };
+		AE9105BC4499429CAEBBA2F6 /* Calibri.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C0EAD28427E4362B454A424 /* Calibri.ttf */; };
+		49403F04B4244148A192E523 /* CirceRoundedAltBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6A4C9AA25FE6433C85E75C87 /* CirceRoundedAltBold.otf */; };
+		3B41C97104CA41DB9A762461 /* CirceRoundedBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 39301575520044EE859CCFBE /* CirceRoundedBold.otf */; };
+		61FA91ECBEFD4810A0D35217 /* CirceRoundedRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3E0F61BD6D55449E83509D6E /* CirceRoundedRegular.otf */; };
+		7E6FC7D2252846828E787887 /* DINProMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 804C4E3671984B8792B12435 /* DINProMedium.ttf */; };
+		505F868AAD42455391817B67 /* DosisRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 77434BC342A34F3CAE558EC2 /* DosisRegular.otf */; };
+		430E2C32E95143E7A4591CB3 /* RobotoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3486CE68F65D48EB86517429 /* RobotoBold.ttf */; };
+		09A363C533034235A0C2B571 /* RobotoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 441799B623994D2788E58098 /* RobotoRegular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +60,15 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OwnKeeper/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		AE72CA1B09BD413480926BA6 /* BalooTwoRegular.ttf */ = {isa = PBXFileReference; name = "BalooTwoRegular.ttf"; path = "../app/assets/fonts/BalooTwoRegular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4C0EAD28427E4362B454A424 /* Calibri.ttf */ = {isa = PBXFileReference; name = "Calibri.ttf"; path = "../app/assets/fonts/Calibri.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6A4C9AA25FE6433C85E75C87 /* CirceRoundedAltBold.otf */ = {isa = PBXFileReference; name = "CirceRoundedAltBold.otf"; path = "../app/assets/fonts/CirceRoundedAltBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		39301575520044EE859CCFBE /* CirceRoundedBold.otf */ = {isa = PBXFileReference; name = "CirceRoundedBold.otf"; path = "../app/assets/fonts/CirceRoundedBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3E0F61BD6D55449E83509D6E /* CirceRoundedRegular.otf */ = {isa = PBXFileReference; name = "CirceRoundedRegular.otf"; path = "../app/assets/fonts/CirceRoundedRegular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		804C4E3671984B8792B12435 /* DINProMedium.ttf */ = {isa = PBXFileReference; name = "DINProMedium.ttf"; path = "../app/assets/fonts/DINProMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		77434BC342A34F3CAE558EC2 /* DosisRegular.otf */ = {isa = PBXFileReference; name = "DosisRegular.otf"; path = "../app/assets/fonts/DosisRegular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		3486CE68F65D48EB86517429 /* RobotoBold.ttf */ = {isa = PBXFileReference; name = "RobotoBold.ttf"; path = "../app/assets/fonts/RobotoBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		441799B623994D2788E58098 /* RobotoRegular.ttf */ = {isa = PBXFileReference; name = "RobotoRegular.ttf"; path = "../app/assets/fonts/RobotoRegular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +158,7 @@
 				00E356EF1AD99517003FC87E /* OwnKeeperTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				C4D3A5C2A9F649FA9E25B6F6 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -156,6 +175,23 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		C4D3A5C2A9F649FA9E25B6F6 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				AE72CA1B09BD413480926BA6 /* BalooTwoRegular.ttf */,
+				4C0EAD28427E4362B454A424 /* Calibri.ttf */,
+				6A4C9AA25FE6433C85E75C87 /* CirceRoundedAltBold.otf */,
+				39301575520044EE859CCFBE /* CirceRoundedBold.otf */,
+				3E0F61BD6D55449E83509D6E /* CirceRoundedRegular.otf */,
+				804C4E3671984B8792B12435 /* DINProMedium.ttf */,
+				77434BC342A34F3CAE558EC2 /* DosisRegular.otf */,
+				3486CE68F65D48EB86517429 /* RobotoBold.ttf */,
+				441799B623994D2788E58098 /* RobotoRegular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -295,6 +331,15 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				1628BD53FE9D4E66A7EC6BC1 /* BalooTwoRegular.ttf in Resources */,
+				AE9105BC4499429CAEBBA2F6 /* Calibri.ttf in Resources */,
+				49403F04B4244148A192E523 /* CirceRoundedAltBold.otf in Resources */,
+				3B41C97104CA41DB9A762461 /* CirceRoundedBold.otf in Resources */,
+				61FA91ECBEFD4810A0D35217 /* CirceRoundedRegular.otf in Resources */,
+				7E6FC7D2252846828E787887 /* DINProMedium.ttf in Resources */,
+				505F868AAD42455391817B67 /* DosisRegular.otf in Resources */,
+				430E2C32E95143E7A4591CB3 /* RobotoBold.ttf in Resources */,
+				09A363C533034235A0C2B571 /* RobotoRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
