@@ -1,11 +1,15 @@
 export const colors = {
     white: "#FFFFFF",
     black: "#000000",
-    clay: "#212336", 
+    clay: "#212336",
     green: "#039628",
+    apple: "#43BE3E",
     cerise: "#d923b5",
     studio: "#8e44ad",
     violet: "#6112f8",
+    surfie: "#0C7979",
     mariner: "#2980b9",
     boulder: "#787878",
+    darlClay: "#1D1F2E", 
+    bluewood: "#314256",
 }
