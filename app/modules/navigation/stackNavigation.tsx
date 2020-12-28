@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { MainView } from '../../views/test';
+import { GeneratorView } from '../../views/generatorView';
 
 const Stack = createStackNavigator();
 
 export const StackMainNavigator: FC = () => {
     return (
-        <Stack.Navigator initialRouteName="MainView" >
-            <Stack.Screen name="MainView" component={MainView} options={{ headerShown: false }} />
-        </Stack.Navigator >
+        <Stack.Navigator initialRouteName="Generator">
+            <Stack.Screen name="Generator" component={GeneratorView} options={{ headerShown: false }} />
+        </Stack.Navigator>
     );
 };

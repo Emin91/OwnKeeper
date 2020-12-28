@@ -25,10 +25,10 @@ export const CustomTabBar: FC<Props> = ({ state, descriptors, navigation }) => {
 
                 const bgColor = () => {
                     switch(index) {
-                        case 0: return colors.cerise;
+                        case 0: return colors.bluewood;
                         case 1: return colors.green;
                         case 2: return colors.mariner;
-                        case 3: return colors.studio;
+                        case 3: return colors.cerise;
                         case 4: return colors.violet;
                         default: return colors.white; 
                     };

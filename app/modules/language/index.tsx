@@ -4,5 +4,15 @@ export const language = {
     dataTab: "Data",
     noteTab: "Notes",
     settingsTab: "Settings",
-
+    generatePassword: "Generate password",
+    yourPassword: "Your password",
+    length: "Length:",
+    btnRefresh: "Generate",
+    settings: "Settings",
+    incUppercase: "Include letters (Uppercase)",
+    incLowercase: "Include letters (Lowercase)",
+    incNumbers: "Include numbers",
+    incSymbols: "Include symbols",
+    copied: "Copied",
+    clickToGenerate: "Click to generate button",
 }
