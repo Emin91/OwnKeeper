@@ -7,6 +7,10 @@ export const getStyle = () => {
             flex: 1,
             backgroundColor: colors.clay,
         },
+        scrollWrapper: {
+            flex: 1,
+            marginBottom: 5,
+        },
     });
     return styles;
 };

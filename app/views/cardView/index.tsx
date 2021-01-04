@@ -1,10 +1,12 @@
 import React, { FC, useContext, useMemo } from 'react';
-import { View } from 'react-native';
-import { CreditCardIcon } from '../../assets/svg/creditCardIcon';
+import { FlatList, View } from 'react-native';
+import { cardItemsData } from '../../../__mocks__/cardItemsData';
 import { PlusIcon } from '../../assets/svg/plusIcon';
 import { MainHeader } from '../../components/mainHeader';
 import { IStackNavigation } from '../../entities';
 import { LocalizationContext } from '../../modules/language';
+import { CardItem } from './cardItem';
+import { NotCard } from './notCard';
 import { getStyle } from './styles';
 
 interface Props {
@@ -18,9 +20,13 @@ export const CardView: FC<Props> = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <MainHeader buttonName={<PlusIcon />} onClick={() => navigation?.navigate('AddAndEditCardView')}/>
-            <View style={{flex: 1, opacity: 0.3, justifyContent: 'center', alignItems: 'center'}}>
-                <CreditCardIcon />
-            </View>
+            { cardItemsData 
+                ? <FlatList 
+                    style={{flex: 1, marginBottom: 5}} 
+                    data={cardItemsData} 
+                    renderItem={({item: {title, date, iconName}, index}) => 
+                        <CardItem key={`${index}_${title}`} {...{ title, date, iconName, index }} /> } />
+                : <NotCard />}
         </View>
     )
 };
