@@ -28,5 +28,11 @@ export const translations = {
         userPassword: 'Password',
         cardNote: 'Note',
         validUntil: 'Valid until',
+        edit: 'Edit',
+        delete: 'Delete',
+        cancel: 'Cancel',
+        deleteCard: 'Delete card',
+        deleteCardText: 'Are you sure you want to delete',
+        required: '* - required',
     }
 };
