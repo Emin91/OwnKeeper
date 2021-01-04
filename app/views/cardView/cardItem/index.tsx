@@ -6,16 +6,16 @@ import { getStyle } from './styles';
 interface Props {
     title: string;
     date: string;
-    index: number;
+    navigation: any
     iconName: React.ReactChild;
 };
 
-export const CardItem: FC<Props> = ({ title, date, iconName, index }) => {
+export const CardItem: FC<Props> = ({ title, date, iconName, navigation }) => {
     const styles = useMemo(() => getStyle(), []);
     const { t }: any = useContext(LocalizationContext);
     
     return (
-        <Pressable onPress={() => {}} style={({ pressed }) => [styles.container, { opacity: pressed ? 0.5 : 1}]}>
+        <Pressable onPress={() => navigation.navigate('CardItemFullPreview', {title})} style={({ pressed }) => [styles.container, { opacity: pressed ? 0.5 : 1}]}>
             <View style={styles.itemWrapper}>
                 <View style={styles.iconWrapper}>
                     {iconName}
