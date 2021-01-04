@@ -1,18 +1,21 @@
-export const language = {
-    generatorTab: "Generator",
-    cardTab: "Cards",
-    dataTab: "Data",
-    noteTab: "Notes",
-    settingsTab: "Settings",
-    generatePassword: "Generate password",
-    yourPassword: "Your password",
-    length: "Length:",
-    btnRefresh: "Generate",
-    settings: "Settings",
-    incUppercase: "Include letters (Uppercase)",
-    incLowercase: "Include letters (Lowercase)",
-    incNumbers: "Include numbers",
-    incSymbols: "Include symbols",
-    copied: "Copied",
-    clickToGenerate: "Click to generate button",
+import React, { FC, useState, useMemo } from 'react';
+import i18n from './services';
+
+export const LocalizationContext: any = React.createContext({});
+
+export const LocalizationContextProvider: FC<any> = (porps: any) => {
+    const [locale, setLocale] = useState(i18n.locale);
+    const localizationContext = useMemo(() => ({
+        t: (scope: any, options: any) => i18n.t(scope, { locale, ...options }),
+        locale,
+        setLocale,
+    }),
+        [locale]
+    );
+
+    return (
+        <LocalizationContext.Provider value={localizationContext}>
+            {porps.children}
+        </LocalizationContext.Provider>
+    );
 }
