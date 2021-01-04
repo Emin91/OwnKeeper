@@ -15,4 +15,5 @@ export const colors = {
     manatee: "#909098",
     darlClay: "#1D1F2E", 
     bluewood: "#314256",
+    lightGray: "#828282",
 }

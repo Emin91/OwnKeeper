@@ -27,5 +27,6 @@ export const translations = {
         userName: 'User name/email/login/phone',
         userPassword: 'Password',
         cardNote: 'Note',
+        validUntil: 'Valid until',
     }
 };
