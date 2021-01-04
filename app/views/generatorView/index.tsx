@@ -1,20 +1,20 @@
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useContext, useMemo, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { RefreshIcon } from '../../assets/svg/refreshIcon';
 import { MainHeader } from '../../components/mainHeader';
-import { language } from '../../modules/language';
+import { LocalizationContext } from '../../modules/language';
 import { GeneratePasswordSettings } from './passwordSettingsView';
 import { getStyle } from './styles';
 
 export const GeneratorView: FC = () => {
     const styles = useMemo(() => getStyle(), []);
-    const { generatePassword, btnRefresh, clickToGenerate } = language;
-    const [passValue, setPassValue] = useState(clickToGenerate);
-    const [isUppercase, setUpperCase] = useState(true);
-    const [isLowercase, setLowerCase] = useState(true);
+    const { t }: any = useContext(LocalizationContext);
+    const [passValue, setPassValue] = useState(t('clickToGenerate'));
+    const [isUppercase, setUpperCase] = useState<any>(true);
+    const [isLowercase, setLowerCase] = useState<any>(true);
     const [passLength, setPassLength] = useState(12);
-    const [isNumber, setNumber] = useState(false);
-    const [isSymbol, setSymbol] = useState(false);
+    const [isNumber, setNumber] = useState<any>(false);
+    const [isSymbol, setSymbol] = useState<any>(false);
 
     const generateRandomPassword = () => {
         let generatedPassword = '';
@@ -65,10 +65,10 @@ export const GeneratorView: FC = () => {
             <MainHeader />
             <View style={{ flex: 1 }}>
                 <View style={styles.titleWrapper}>
-                    <Text numberOfLines={1} style={styles.title}>{generatePassword}</Text>
+                    <Text numberOfLines={1} style={styles.title}>{t('generatePassword')}</Text>
                 </View>
                 <GeneratePasswordSettings {...{ passValue, isUppercase, setUpperCase, isLowercase, setLowerCase, passLength, setPassLength, isNumber, setNumber, isSymbol, setSymbol }}/>
-                <View style={styles.buttonContainer}>
+                <View style={[styles.buttonContainer, { opacity: isUppercase || isLowercase || isNumber || isSymbol ? 1 : 0.2}]}>
                     <Pressable 
                         onPress={generateRandomPassword} 
                         disabled={isUppercase || isLowercase || isNumber || isSymbol ? false : true} 
@@ -76,7 +76,7 @@ export const GeneratorView: FC = () => {
                             <View style={styles.refreshIcon}>
                                 <RefreshIcon />
                             </View>
-                            <Text style={styles.buttonText}>{btnRefresh}</Text>
+                            <Text style={styles.buttonText}>{t('btnRefresh')}</Text>
                     </Pressable>
                 </View>
             </View>
