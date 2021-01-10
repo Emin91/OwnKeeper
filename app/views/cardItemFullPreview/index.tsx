@@ -14,23 +14,23 @@ interface Props {
 export const CardItemFullPreview: FC<Props> = ({ navigation, route }) => {
 	const styles = useMemo(() => getStyle(), []);
 	const { title } = route.params || { title: '' };
-	const { t }: any = useContext(LocalizationContext);
+	const { lang }: any = useContext(LocalizationContext);
 	
 	return (
 		<View style={styles.container}>
 			<NavigationHeader
-				t={t}
+				t={lang}
 				isOptionMenu
 				title={title}
 				routeName={'CardView'}
 				navigation={navigation} 
 				editRouteName={'AddAndEditCardView'} />
-			<DataItemBox t={t} inputValue={'Emin Zeynalov'} label={t('cardholderName')} />
-			<DataItemBox t={t} inputValue={'1234567898765432'} label={t('cardNumber')} isHidden />
-			<DataItemBox t={t} inputValue={'1254'} label={t('cardPin')} isHidden />
-			<DataItemBox t={t} inputValue={'385'} label={t('cardCvv')} isHidden />
-			<DataItemBox t={t} inputValue={'12/22'} label={t('cardExpiration')} />
-			<DataItemBox t={t} inputValue={'My work card'} label={t('cardNote')} />
+			<DataItemBox t={lang} inputValue={'Emin Zeynalov'} label={lang('cardholderName')} />
+			<DataItemBox t={lang} inputValue={'1234567898765432'} label={lang('cardNumber')} isHidden />
+			<DataItemBox t={lang} inputValue={'1254'} label={lang('cardPin')} isHidden />
+			<DataItemBox t={lang} inputValue={'385'} label={lang('cardCvv')} isHidden />
+			<DataItemBox t={lang} inputValue={'12/22'} label={lang('cardExpiration')} />
+			<DataItemBox t={lang} inputValue={'My work card'} label={lang('cardNote')} />
 		</View>
 	);
 };

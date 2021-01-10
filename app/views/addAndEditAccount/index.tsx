@@ -13,7 +13,7 @@ interface Props {
 
 export const AddAndEditAccountView: FC<Props> = ({ route, navigation }) => {
     const styles = useMemo(() => getStyle(), []);
-    const { t }: any = useContext(LocalizationContext);
+    const { lang }: any = useContext(LocalizationContext);
     const { isEdit, title } = route.params || { isEdit: false, title: '' };
     const [siteName, setSiteName] = useState<string>('');
 
@@ -21,23 +21,23 @@ export const AddAndEditAccountView: FC<Props> = ({ route, navigation }) => {
         <View style={styles.container}>
             <NavigationHeader 
                 navigation={navigation} 
-                title={!isEdit ? t('addAccount') : `${t('edit')} ${title}`} 
+                title={!isEdit ? lang('addAccount') : `${lang('edit')} ${title}`} 
                 onClick={() => navigation.navigate('DataView')} 
                 routeName={!isEdit ? 'DataView' : 'DataItemFullPreview'} />
             <View style={{ flex: 1 }}>
-                <TextField isRequired placeholder={t('siteName')} onChange={setSiteName} />
-                <TextField isRequired placeholder={t('userLogin')} onChange={setSiteName} />
-                <TextField isRequired placeholder={t('userPassword')} onChange={setSiteName} />
-                <TextField placeholder={t('cardNote')} onChange={setSiteName} />
+                <TextField isRequired placeholder={lang('siteName')} onChange={setSiteName} />
+                <TextField isRequired placeholder={lang('userLogin')} onChange={setSiteName} />
+                <TextField isRequired placeholder={lang('userPassword')} onChange={setSiteName} />
+                <TextField placeholder={lang('cardNote')} onChange={setSiteName} />
                 <View style={styles.passwordButtons}>
-                    <Text numberOfLines={1} style={styles.noPassword}>{t('noPassword')}</Text>
+                    <Text numberOfLines={1} style={styles.noPassword}>{lang('noPassword')}</Text>
                     <Pressable onPress={() => navigation.navigate('GeneratorView', { isNoPassword: true })} hitSlop={20} style={({ pressed }) => [{opacity: pressed ? 0.5 : 1, marginLeft: 5}]}>
-                        <Text numberOfLines={1} style={styles.generatePassword}>{t('generatePassword')}</Text>
+                        <Text numberOfLines={1} style={styles.generatePassword}>{lang('generatePassword')}</Text>
                     </Pressable>
                 </View>
             </View>
             <View style={styles.requiredWrapper}>
-                <Text style={styles.required}>{t('required')}</Text>
+                <Text style={styles.required}>{lang('required')}</Text>
             </View>
         </View>
     )

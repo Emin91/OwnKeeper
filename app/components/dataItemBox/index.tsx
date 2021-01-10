@@ -21,7 +21,7 @@ export const DataItemBox: FC<Props> = ({ isHidden = false, label = '', inputValu
 
     const copyToClipboard = () => {
         ToastAndroid.show(
-            label !== t('cardNumber') ? `${t('copied')} ${inputValue}` : `${t('copied')} ${formatedNumber}`, 
+            label !== lang('cardNumber') ? `${lang('copied')} ${inputValue}` : `${lang('copied')} ${formatedNumber}`, 
             ToastAndroid.SHORT
         );
         Clipboard.setString(inputValue);
@@ -32,7 +32,7 @@ export const DataItemBox: FC<Props> = ({ isHidden = false, label = '', inputValu
             <View style={styles.itemWrapper}>
                 <Text style={styles.label}>{label}</Text>
                 <TextInput
-                    value={label !== t('cardNumber') ? inputValue : formatedNumber}
+                    value={label !== lang('cardNumber') ? inputValue : formatedNumber}
                     editable={false}
                     secureTextEntry={isHidden ? isShow : false}
                     style={styles.inputWrapper}

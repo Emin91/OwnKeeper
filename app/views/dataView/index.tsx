@@ -15,7 +15,7 @@ interface Props {
 
 export const DataView: FC<Props> = ({ navigation }) => {
     const styles = useMemo(() => getStyle(), []);
-    const { t }: any = useContext(LocalizationContext);
+    const { lang }: any = useContext(LocalizationContext);
  
     return (
         <View style={styles.container}>

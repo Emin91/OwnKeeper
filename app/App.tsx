@@ -7,15 +7,15 @@ import { RootNavigation } from './modules/navigation/rootNavigation';
 import { store } from './modules/redux/store';
 
 const App: FC = () => {
-  return (
-    <Provider store={store}>
-      <LocalizationContextProvider>
-        <StatusBar backgroundColor={colors.darlClay} barStyle="light-content" />
-          {/* {true ? <InfoPopUp /> : null} */}
-          <RootNavigation />
-      </LocalizationContextProvider>
-    </Provider>
-  );
+	return (
+		<Provider store={store}>
+			<LocalizationContextProvider>
+				<StatusBar backgroundColor={colors.darlClay} barStyle="light-content" />
+				{/* {true ? <InfoPopUp /> : null} */}
+				<RootNavigation />
+			</LocalizationContextProvider>
+		</Provider>
+	);
 };
 
 export default App;

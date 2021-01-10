@@ -13,7 +13,7 @@ interface Props {
 
 export const CardItem: FC<Props> = ({ title, date, iconName, navigation }) => {
     const styles = useMemo(() => getStyle(), []);
-    const { t }: any = useContext(LocalizationContext);
+    const { lang }: any = useContext(LocalizationContext);
     
     return (
         <Pressable onPress={() => navigation.navigate('CardItemFullPreview', {title})} style={({ pressed }) => [styles.container, { opacity: pressed ? 0.5 : 1}]}>
@@ -23,7 +23,7 @@ export const CardItem: FC<Props> = ({ title, date, iconName, navigation }) => {
                 </View>
                 <View style={styles.descriptionWrapper}>
                     <Text style={styles.title}>{title}</Text>
-                    {date ? <Text style={styles.date}>{t('validUntil')} {date}</Text> : null}
+                    {date ? <Text style={styles.date}>{lang('validUntil')} {date}</Text> : null}
                 </View>
             </View>
         </Pressable>
