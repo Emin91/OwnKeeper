@@ -33,8 +33,8 @@ export const NavigationHeader: FC<Props> = ({ navigation, routeName = '', title 
 
     const onDeletePress = () => {
         Alert.alert(
-            t('deleteCard'),
-            `${t('deleteCardText')} ${title} card?`,
+            lang('deleteCard'),
+            `${lang('deleteCardText')} ${title} card?`,
             [
               {
                 text: "Cancel",
@@ -56,7 +56,7 @@ export const NavigationHeader: FC<Props> = ({ navigation, routeName = '', title 
             { isOptionMenu
                 ?  <OptionsMenu
                         customButton={<DotsIcon />}
-                        options={[t('edit'), t('delete'), t('cancel')]}
+                        options={[lang('edit'), lang('delete'), lang('cancel')]}
                         actions={[onEditPress, onDeletePress]} />
                 : <SaveIcon />}
             </Pressable>

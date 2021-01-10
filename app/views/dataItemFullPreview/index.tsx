@@ -14,21 +14,21 @@ interface Props {
 export const DataItemFullPreview: FC<Props> = ({ route, navigation }) => {
 	const styles = useMemo(() => getStyle(), []);
 	const { serviceName, login } = route.params || { serviceName: '', login: '' };
-	const { t }: any = useContext(LocalizationContext);
+	const { lang }: any = useContext(LocalizationContext);
 	
 	return (
 		<View style={styles.container}>
 			<NavigationHeader
-				t={t}
+				t={lang}
 				isOptionMenu
 				title={serviceName}
 				routeName={'DataView'}
 				navigation={navigation} 
 				editRouteName={'AddAndEditAccountView'} />
-			<DataItemBox t={t} inputValue={serviceName} label={t('siteName')} />
-			<DataItemBox t={t} inputValue={login} label={t('userLogin')} />
-			<DataItemBox t={t} inputValue={'E44sd83dfBukjvBy5vi%^V7Fv'} label={t('userPassword')} isHidden />
-			<DataItemBox t={t} inputValue={'This is my data'} label={t('cardNote')} />
+			<DataItemBox t={lang} inputValue={serviceName} label={lang('siteName')} />
+			<DataItemBox t={lang} inputValue={login} label={lang('userLogin')} />
+			<DataItemBox t={lang} inputValue={'E44sd83dfBukjvBy5vi%^V7Fv'} label={lang('userPassword')} isHidden />
+			<DataItemBox t={lang} inputValue={'This is my data'} label={lang('cardNote')} />
 		</View>
 	);
 };

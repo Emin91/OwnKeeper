@@ -15,9 +15,9 @@ interface Props {
 
 export const GeneratorView: FC<Props> = ({ navigation, route }) => {
     const styles = useMemo(() => getStyle(), []);
-    const { t }: any = useContext(LocalizationContext);
+    const { lang }: any = useContext(LocalizationContext);
     const { isNoPassword } = route.params || { isNoPassword: false };
-    const [passValue, setPassValue] = useState(t('clickToGenerate'));
+    const [passValue, setPassValue] = useState(lang('clickToGenerate'));
     const [isUppercase, setUpperCase] = useState<any>(true);
     const [isLowercase, setLowerCase] = useState<any>(true);
     const [passLength, setPassLength] = useState(12);
@@ -80,10 +80,10 @@ export const GeneratorView: FC<Props> = ({ navigation, route }) => {
         <View style={styles.container}>
             {!isNoPassword
                 ? <MainHeader />
-                : <NavigationHeader title={t('passwordCreator')} navigation={navigation} routeName={'AddAndEditAccountView'} onClick={onSavePassword} onBackPress={onBackPress} />}
+                : <NavigationHeader title={lang('passwordCreator')} navigation={navigation} routeName={'AddAndEditAccountView'} onClick={onSavePassword} onBackPress={onBackPress} />}
             <View style={{ flex: 1 }}>
                 <View style={styles.titleWrapper}>
-                    <Text numberOfLines={1} style={styles.title}>{t('generatePassword')}</Text>
+                    <Text numberOfLines={1} style={styles.title}>{lang('generatePassword')}</Text>
                 </View>
                 <GeneratePasswordSettings {...{ passValue, isUppercase, setUpperCase, isLowercase, setLowerCase, passLength, setPassLength, isNumber, setNumber, isSymbol, setSymbol }}/>
                 <View style={[styles.buttonContainer, { opacity: isUppercase || isLowercase || isNumber || isSymbol ? 1 : 0.2}]}>
@@ -94,7 +94,7 @@ export const GeneratorView: FC<Props> = ({ navigation, route }) => {
                             <View style={styles.refreshIcon}>
                                 <RefreshIcon />
                             </View>
-                            <Text style={styles.buttonText}>{t('btnRefresh')}</Text>
+                            <Text style={styles.buttonText}>{lang('btnRefresh')}</Text>
                     </Pressable>
                 </View>
             </View>

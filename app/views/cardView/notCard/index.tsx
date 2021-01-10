@@ -8,7 +8,7 @@ interface Props {};
 
 export const NotCard: FC<Props> = () => {
     const styles = useMemo(() => getStyle(), []);
-    const { t }: any = useContext(LocalizationContext);
+    const { lang }: any = useContext(LocalizationContext);
 
     return (
         <View style={styles.container}>

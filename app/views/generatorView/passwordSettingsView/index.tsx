@@ -35,25 +35,25 @@ export const GeneratePasswordSettings: FC<Props> = ({
     setLowerCase,
     setPassLength }) => {
     const styles = useMemo(() => getStyle(), []);
-    const { t }: any = useContext(LocalizationContext);
+    const { lang }: any = useContext(LocalizationContext);
     
     const copyToClipboard = () => {
         ToastAndroid.show(
-            `${t('copied')} ${passValue}`, ToastAndroid.SHORT
+            `${lang('copied')} ${passValue}`, ToastAndroid.SHORT
         );
         Clipboard.setString(passValue);
     };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.boxLabel}>{t('yourPassword')}</Text>
+            <Text style={styles.boxLabel}>{lang('yourPassword')}</Text>
             <View style={styles.titleWrapper}>
                 <Pressable onPress={copyToClipboard} style={({ pressed }) => [styles.copyButton, {opacity: pressed ? 0.5 : 1}]}>
-                    {passValue !== t('clickToGenerate') ? <CopyIcon /> : null}
+                    {passValue !== lang('clickToGenerate') ? <CopyIcon /> : null}
                 </Pressable>
-                <TextInput editable={false} numberOfLines={1} style={[styles.title, styles.input, {fontSize: passLength >= 25 && passValue !== t('clickToGenerate') ? 18 : 20}]} value={passValue}/>
+                <TextInput editable={false} numberOfLines={1} style={[styles.title, styles.input, {fontSize: passLength >= 25 && passValue !== lang('clickToGenerate') ? 18 : 20}]} value={passValue}/>
             </View>
-            <Text style={[styles.boxLabel, { marginTop: 10 }]}>{t('passLength')} <Text style={{color: passLength ? '#31c458' : colors.white}}>{passLength}</Text></Text>
+            <Text style={[styles.boxLabel, { marginTop: 10 }]}>{lang('passLength')} <Text style={{color: passLength ? '#31c458' : colors.white}}>{passLength}</Text></Text>
             <View style={[styles.itemWrapper, styles.itemRow]}>
                 <Text style={styles.title}>4</Text>
                 <Slider
@@ -68,11 +68,11 @@ export const GeneratePasswordSettings: FC<Props> = ({
                     onValueChange={(value) => setPassLength(value)} />
                 <Text style={styles.title}>32</Text>
             </View>
-            <Text style={[styles.boxLabel, { marginTop: 10 }]}>{t('settings')}</Text>
-            <SettingsItem label={t('incUppercase')} switchValue={isUppercase} setSwitchValue={setUpperCase}/>
-            <SettingsItem label={t('incLowercase')} switchValue={isLowercase} setSwitchValue={setLowerCase}/>
-            <SettingsItem label={t('incNumbers')} switchValue={isNumber} setSwitchValue={setNumber}/>
-            <SettingsItem label={t('incSymbols')} switchValue={isSymbol} setSwitchValue={setSymbol}/>
+            <Text style={[styles.boxLabel, { marginTop: 10 }]}>{lang('settings')}</Text>
+            <SettingsItem label={lang('incUppercase')} switchValue={isUppercase} setSwitchValue={setUpperCase}/>
+            <SettingsItem label={lang('incLowercase')} switchValue={isLowercase} setSwitchValue={setLowerCase}/>
+            <SettingsItem label={lang('incNumbers')} switchValue={isNumber} setSwitchValue={setNumber}/>
+            <SettingsItem label={lang('incSymbols')} switchValue={isSymbol} setSwitchValue={setSymbol}/>
         </View>
     )
 };
