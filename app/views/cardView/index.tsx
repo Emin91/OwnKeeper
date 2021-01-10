@@ -9,7 +9,7 @@ import { NotCard } from './notCard';
 import { getStyle } from './styles';
 
 interface Props {
-    navigation?: IStackNavigation; 
+    navigation: IStackNavigation; 
 };
 
 export const CardView: FC<Props> = ({ navigation }) => {

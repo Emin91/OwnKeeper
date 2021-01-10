@@ -16,4 +16,5 @@ export const colors = {
     darlClay: "#1D1F2E", 
     bluewood: "#314256",
     lightGray: "#828282",
+    pictionBlue: "#3192EC",
 }

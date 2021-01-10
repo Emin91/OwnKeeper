@@ -7,10 +7,6 @@ export const getStyle = () => {
             flex: 1,
             backgroundColor: colors.clay,
         },
-        items: {
-            flex: 1,
-            marginBottom: 6,
-        },
     });
     return styles;
 };

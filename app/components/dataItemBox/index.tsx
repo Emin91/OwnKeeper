@@ -1,24 +1,23 @@
-import React, { FC, useContext, useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { View, Text, Pressable, TextInput, ToastAndroid } from 'react-native';
-import { LocalizationContext } from '../../../modules/language';
-import { colors } from '../../../assets/constants/colors';
 import Clipboard from '@react-native-community/clipboard';
-import { CopyIcon } from '../../../assets/svg/copyIcon';
-import { HideIcon } from '../../../assets/svg/hideIcon';
-import { ShowIcon } from '../../../assets/svg/showIcon';
+import { colors } from '../../assets/constants/colors';
+import { CopyIcon } from '../../assets/svg/copyIcon';
+import { HideIcon } from '../../assets/svg/hideIcon';
+import { ShowIcon } from '../../assets/svg/showIcon';
 import { getStyle } from './styles';
 
 interface Props {
+    t: any;
     label: string;
     isHidden?: boolean;
     inputValue: string;
 };
 
-export const CardItemBox: FC<Props> = ({ isHidden = false, label = '', inputValue = '' }) => {
+export const DataItemBox: FC<Props> = ({ isHidden = false, label = '', inputValue = '', t }) => {
     const [isShow, setIsShow] = useState(true);
-    const styles = useMemo(() => getStyle(isShow, isHidden), [isShow, isHidden]);
-    const { t }: any = useContext(LocalizationContext);
     const formatedNumber = inputValue.replace(/\B(?=(\d{4})+(?!\d))/g, " ");
+    const styles = useMemo(() => getStyle(isShow, isHidden), [isShow, isHidden]);
 
     const copyToClipboard = () => {
         ToastAndroid.show(

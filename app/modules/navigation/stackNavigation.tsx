@@ -1,19 +1,21 @@
 import React, { FC } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { GeneratorView } from '../../views/generatorView';
-import { CardView } from '../../views/cardView';
-import { AddAndEditCardView } from '../../views/addAndEditCardView';
 import { CardItemFullPreview } from '../../views/cardItemFullPreview';
-import { DataView } from '../../views/dataView';
-import { NotesView } from '../../views/notesView';
+import { DataItemFullPreview } from '../../views/dataItemFullPreview';
+import { AddAndEditAccountView } from '../../views/addAndEditAccount';
+import { AddAndEditCardView } from '../../views/addAndEditCardView';
+import { GeneratorView } from '../../views/generatorView';
 import { SettingsView } from '../../views/settingsView';
+import { NotesView } from '../../views/notesView';
+import { DataView } from '../../views/dataView';
+import { CardView } from '../../views/cardView';
 
 const Stack = createStackNavigator();
 
 export const StackGeneratorNavigator: FC = () => {
     return (
-        <Stack.Navigator initialRouteName="Generator">
-            <Stack.Screen name="Generator" component={GeneratorView} options={{ headerShown: false }} />
+        <Stack.Navigator initialRouteName="GeneratorView">
+            <Stack.Screen name="GeneratorView" component={GeneratorView} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 };
@@ -31,6 +33,8 @@ export const StackDataNavigator: FC = () => {
     return (
         <Stack.Navigator initialRouteName="DataView">
             <Stack.Screen name="DataView" component={DataView} options={{ headerShown: false }} />
+            <Stack.Screen name="AddAndEditAccountView" component={AddAndEditAccountView} options={{ headerShown: false }} />
+            <Stack.Screen name="DataItemFullPreview" component={DataItemFullPreview} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 };

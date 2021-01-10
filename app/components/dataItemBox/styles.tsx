@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../../assets/constants/colors';
+import { colors } from '../../assets/constants/colors';
 
 export const getStyle = (isShow: boolean, isHidden: boolean) => {
     const styles = StyleSheet.create({
