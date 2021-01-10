@@ -1,9 +1,9 @@
 import React, { FC, useContext, useMemo } from 'react';
 import { View } from 'react-native';
 import { NavigationHeader } from '../../components/navigationHeader';
-import { IStackNavigation } from '../../entities';
 import { LocalizationContext } from '../../modules/language';
-import { CardItemBox } from './cardItemBox';
+import { DataItemBox } from '../../components/dataItemBox';
+import { IStackNavigation } from '../../entities';
 import { getStyle } from './styles';
 
 interface Props {
@@ -12,8 +12,8 @@ interface Props {
 };
 
 export const CardItemFullPreview: FC<Props> = ({ navigation, route }) => {
-	const { title } = route.params || { title: '' }
 	const styles = useMemo(() => getStyle(), []);
+	const { title } = route.params || { title: '' };
 	const { t }: any = useContext(LocalizationContext);
 	
 	return (
@@ -23,13 +23,14 @@ export const CardItemFullPreview: FC<Props> = ({ navigation, route }) => {
 				isOptionMenu
 				title={title}
 				routeName={'CardView'}
-				navigation={navigation} />
-			<CardItemBox inputValue={'Emin Zeynalov'} label={t('cardholderName')} />
-			<CardItemBox inputValue={'1234567898765432'} label={t('cardNumber')} isHidden />
-			<CardItemBox inputValue={'1254'} label={t('cardPin')} isHidden />
-			<CardItemBox inputValue={'385'} label={t('cardCvv')} isHidden />
-			<CardItemBox inputValue={'12/22'} label={t('cardExpiration')} />
-			<CardItemBox inputValue={'My work card'} label={t('cardNote')} />
+				navigation={navigation} 
+				editRouteName={'AddAndEditCardView'} />
+			<DataItemBox t={t} inputValue={'Emin Zeynalov'} label={t('cardholderName')} />
+			<DataItemBox t={t} inputValue={'1234567898765432'} label={t('cardNumber')} isHidden />
+			<DataItemBox t={t} inputValue={'1254'} label={t('cardPin')} isHidden />
+			<DataItemBox t={t} inputValue={'385'} label={t('cardCvv')} isHidden />
+			<DataItemBox t={t} inputValue={'12/22'} label={t('cardExpiration')} />
+			<DataItemBox t={t} inputValue={'My work card'} label={t('cardNote')} />
 		</View>
 	);
 };

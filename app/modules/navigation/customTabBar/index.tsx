@@ -1,12 +1,13 @@
 import React, { FC, useMemo } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { colors } from '../../../assets/constants/colors';
+import { IStackNavigation } from '../../../entities';
 import { getStyle } from './styles';
 
 interface Props {
     state: any;
     descriptors: any;
-    navigation: any;
+    navigation: IStackNavigation;
 };
 
 export const CustomTabBar: FC<Props> = ({ state, descriptors, navigation }) => {
@@ -35,7 +36,7 @@ export const CustomTabBar: FC<Props> = ({ state, descriptors, navigation }) => {
                 };                
 
                 return (
-                    <Pressable  key={index} onPress={onPress} style={[styles.tabBarButton, { paddingLeft: index == 0 ? 10 : 0, paddingRight: index == 4 ? 10 : 0 }]}>
+                    <Pressable key={index} onPress={onPress} style={[styles.tabBarButton, { paddingLeft: index == 0 ? 10 : 0, paddingRight: index == 4 ? 10 : 0 }]}>
                         <View style={[styles.buttonWrapper, {backgroundColor: isFocused ? bgColor() : colors.white}]}>
                             <Text style={[styles.label, { color: isFocused ? colors.white : colors.boulder, fontSize: isFocused ? 14 : 12 }]}>{options.tabBarLabel}</Text>
                         </View>

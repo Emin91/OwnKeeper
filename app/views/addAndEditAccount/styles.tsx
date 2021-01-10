@@ -7,9 +7,24 @@ export const getStyle = () => {
             flex: 1,
             backgroundColor: colors.clay,
         },
-        scrollWrapper: {
-            flex: 1, 
-            marginBottom: 30,
+        passwordButtons: {
+            width: '100%',
+            marginTop: 14,
+            alignItems: 'center',
+            flexDirection: 'row',
+            justifyContent: 'center',
+        },
+        noPassword: {
+            fontSize: 14,
+            color: colors.white,
+            fontFamily: 'RobotoRegular',
+        },
+        generatePassword: {
+            fontSize: 14,
+            color: colors.pictionBlue,
+            fontFamily: 'RobotoRegular',
+            textDecorationStyle: 'solid',
+            textDecorationLine: 'underline',
         },
         requiredWrapper: {
             bottom: 0,

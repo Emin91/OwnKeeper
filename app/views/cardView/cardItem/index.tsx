@@ -1,13 +1,14 @@
 import React, { FC, useContext, useMemo } from 'react';
 import { View, Pressable, Text } from 'react-native';
 import { LocalizationContext } from '../../../modules/language';
+import { IStackNavigation } from '../../../entities';
 import { getStyle } from './styles';
 
 interface Props {
     title: string;
     date: string;
-    navigation: any
     iconName: React.ReactChild;
+    navigation: IStackNavigation;
 };
 
 export const CardItem: FC<Props> = ({ title, date, iconName, navigation }) => {

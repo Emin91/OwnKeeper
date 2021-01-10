@@ -24,7 +24,7 @@ export const translations = {
         cardCvv: 'CVV code',
         cardExpiration: 'Expiration date',
         siteName: 'Site or service name',
-        userName: 'User name/email/login/phone',
+        userLogin: 'User name/email/login/phone',
         userPassword: 'Password',
         cardNote: 'Note',
         validUntil: 'Valid until',
@@ -34,5 +34,8 @@ export const translations = {
         deleteCard: 'Delete card',
         deleteCardText: 'Are you sure you want to delete',
         required: '* - required',
+        noPassword: 'Don\'t have a password?',
+        passwordCreator: 'Password creator',
+        addAccount: 'Add Account',
     }
 };

@@ -2,13 +2,21 @@ import React, { FC, useContext, useMemo, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { RefreshIcon } from '../../assets/svg/refreshIcon';
 import { MainHeader } from '../../components/mainHeader';
-import { LocalizationContext } from '../../modules/language';
+import { NavigationHeader } from '../../components/navigationHeader';
+import { IStackNavigation } from '../../entities';
+import { LocalizationContext } from '../../modules/language';   
 import { GeneratePasswordSettings } from './passwordSettingsView';
 import { getStyle } from './styles';
 
-export const GeneratorView: FC = () => {
+interface Props {
+    route: any;
+    navigation: IStackNavigation;
+};
+
+export const GeneratorView: FC<Props> = ({ navigation, route }) => {
     const styles = useMemo(() => getStyle(), []);
     const { t }: any = useContext(LocalizationContext);
+    const { isNoPassword } = route.params || { isNoPassword: false };
     const [passValue, setPassValue] = useState(t('clickToGenerate'));
     const [isUppercase, setUpperCase] = useState<any>(true);
     const [isLowercase, setLowerCase] = useState<any>(true);
@@ -60,9 +68,19 @@ export const GeneratorView: FC = () => {
         isSymbol: getRandomSymbol,
     };
 
+    const onSavePassword = () => {
+        console.log('passwordGenerated');
+    };
+
+    const onBackPress = () => {
+        navigation.setParams({ isNoPassword:  false });
+    };
+
     return (
         <View style={styles.container}>
-            <MainHeader />
+            {!isNoPassword
+                ? <MainHeader />
+                : <NavigationHeader title={t('passwordCreator')} navigation={navigation} routeName={'AddAndEditAccountView'} onClick={onSavePassword} onBackPress={onBackPress} />}
             <View style={{ flex: 1 }}>
                 <View style={styles.titleWrapper}>
                     <Text numberOfLines={1} style={styles.title}>{t('generatePassword')}</Text>

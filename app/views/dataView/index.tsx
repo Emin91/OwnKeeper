@@ -1,19 +1,31 @@
-import React, { FC, useContext, useMemo, useState } from 'react';
-import { View, Text, Pressable } from 'react-native';
-import { MainHeader } from '../../components/mainHeader';
+import React, { FC, useContext, useMemo } from 'react';
+import { View, FlatList } from 'react-native';
 import { LocalizationContext } from '../../modules/language';
+import { MainHeader } from '../../components/mainHeader';
+import { DataItems } from '../../../__mocks__/dataItems';
+import { PlusIcon } from '../../assets/svg/plusIcon';
+import { IStackNavigation } from '../../entities';
+import { DataItem } from './dataItem';
 import { getStyle } from './styles';
+import { NoData } from './noData';
 
-export const DataView: FC = () => {
+interface Props {
+    navigation: IStackNavigation;
+};
+
+export const DataView: FC<Props> = ({ navigation }) => {
     const styles = useMemo(() => getStyle(), []);
     const { t }: any = useContext(LocalizationContext);
-
+ 
     return (
         <View style={styles.container}>
-            <MainHeader />
-            <View style={{ flex: 1 }}>
-                <Text>Data view</Text>
-            </View>
+            <MainHeader buttonName={<PlusIcon />} onClick={() => navigation.navigate('AddAndEditAccountView')} />
+            {DataItems 
+                ? <FlatList 
+                    data={DataItems} 
+                    style={styles.items}
+                    renderItem={({item: {serviceName, login}}) => <DataItem {...{navigation, serviceName, login}} />} />
+                : <NoData />}
         </View>
     )
 };
