@@ -33,3 +33,7 @@ export interface ICard {
     expirationDate: string;
     cardNote?: string;
 }
+
+export interface IGeneratedPassword {
+    generatedPassword: string;
+}

@@ -1,12 +1,14 @@
 import React, { FC, useContext, useMemo, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
+import { NavigationHeader } from '../../components/navigationHeader';
+import { GeneratePasswordSettings } from './passwordSettingsView';
+import { LocalizationContext } from '../../modules/language';   
 import { RefreshIcon } from '../../assets/svg/refreshIcon';
 import { MainHeader } from '../../components/mainHeader';
-import { NavigationHeader } from '../../components/navigationHeader';
 import { IStackNavigation } from '../../entities';
-import { LocalizationContext } from '../../modules/language';   
-import { GeneratePasswordSettings } from './passwordSettingsView';
 import { getStyle } from './styles';
+import { useDispatch } from 'react-redux';
+import { setGeneratedPassword } from '../../modules/redux/generator/actions';
 
 interface Props {
     route: any;
@@ -16,14 +18,15 @@ interface Props {
 export const GeneratorView: FC<Props> = ({ navigation, route }) => {
     const styles = useMemo(() => getStyle(), []);
     const { lang }: any = useContext(LocalizationContext);
-    const { isNoPassword } = route.params || { isNoPassword: false };
+    const { isNoPassword } = route.params || { isNoPassword: true };
     const [passValue, setPassValue] = useState(lang('clickToGenerate'));
     const [isUppercase, setUpperCase] = useState<any>(true);
     const [isLowercase, setLowerCase] = useState<any>(true);
-    const [passLength, setPassLength] = useState(12);
     const [isNumber, setNumber] = useState<any>(false);
     const [isSymbol, setSymbol] = useState<any>(false);
-
+    const [passLength, setPassLength] = useState(12);
+    const dispatch = useDispatch();
+    
     const generateRandomPassword = () => {
         let generatedPassword = '';
         const typesCount = isUppercase + isLowercase + isNumber + isSymbol;
@@ -69,18 +72,21 @@ export const GeneratorView: FC<Props> = ({ navigation, route }) => {
     };
 
     const onSavePassword = () => {
-        console.log('passwordGenerated');
+        dispatch(setGeneratedPassword(passValue));
+        navigation.setParams({isNoPassword: true});
+        navigation.navigate('AddAndEditAccountView');
     };
-
+    
     const onBackPress = () => {
-        navigation.setParams({ isNoPassword:  false });
+        navigation.setParams({isNoPassword: true});
+        !isNoPassword && navigation.navigate('AddAndEditAccountView');
     };
 
     return (
         <View style={styles.container}>
-            {!isNoPassword
+            {isNoPassword
                 ? <MainHeader />
-                : <NavigationHeader title={lang('passwordCreator')} navigation={navigation} routeName={'AddAndEditAccountView'} onClick={onSavePassword} onBackPress={onBackPress} />}
+                : <NavigationHeader title={lang('passwordCreator')} onBackPress={onBackPress} onSavePress={onSavePassword} />}
             <View style={{ flex: 1 }}>
                 <View style={styles.titleWrapper}>
                     <Text numberOfLines={1} style={styles.title}>{lang('generatePassword')}</Text>

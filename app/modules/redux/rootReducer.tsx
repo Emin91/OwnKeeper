@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import { cart } from '../redux/reducer/reducer'
+import { RGenerator } from './generator/reducer';
+import { RValidation } from './validation/reducer';
+import { RUserAccounts } from './userAccounts/reducer';
 
 const rootReducer = combineReducers({
-    cart,
+    RGenerator,
+    RValidation,
+    RUserAccounts,
 });
 
 export default rootReducer;

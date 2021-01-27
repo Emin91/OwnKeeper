@@ -58,14 +58,14 @@ export const GeneratePasswordSettings: FC<Props> = ({
                 <Text style={styles.title}>4</Text>
                 <Slider
                     step={1}
-                    value={passLength}
                     minimumValue={4}
                     maximumValue={32}
                     style={{width: '85%'}}
                     thumbTintColor={colors.white}
                     minimumTrackTintColor={colors.surfie}
                     maximumTrackTintColor={colors.darlClay}
-                    onValueChange={(value) => setPassLength(value)} />
+                    onValueChange={(value) => setPassLength(value)} 
+                    />
                 <Text style={styles.title}>32</Text>
             </View>
             <Text style={[styles.boxLabel, { marginTop: 10 }]}>{lang('settings')}</Text>

@@ -1,13 +1,13 @@
-import React, { FC, useContext, useMemo } from 'react';
-import { View, FlatList } from 'react-native';
-import { LocalizationContext } from '../../modules/language';
+import React, { FC, useEffect, useMemo } from 'react';
+import { View, FlatList, Keyboard } from 'react-native';
 import { MainHeader } from '../../components/mainHeader';
-import { DataItems } from '../../../__mocks__/dataItems';
 import { PlusIcon } from '../../assets/svg/plusIcon';
 import { IStackNavigation } from '../../entities';
 import { DataItem } from './dataItem';
 import { getStyle } from './styles';
 import { NoData } from './noData';
+import { shallowEqual, useSelector } from 'react-redux';
+import { selectUserAccount } from '../../modules/redux/userAccounts/selectors';
 
 interface Props {
     navigation: IStackNavigation;
@@ -15,16 +15,22 @@ interface Props {
 
 export const DataView: FC<Props> = ({ navigation }) => {
     const styles = useMemo(() => getStyle(), []);
-    const { lang }: any = useContext(LocalizationContext);
+    const userAccount: Array<{localSiteName: string, localLogin: string, localPassword: string, localNote?: string, localId: number}>  = useSelector(selectUserAccount, shallowEqual)
+
+    useEffect(() => {
+        Keyboard.dismiss();
+    }, []);
  
     return (
         <View style={styles.container}>
             <MainHeader buttonName={<PlusIcon />} onClick={() => navigation.navigate('AddAndEditAccountView')} />
-            {DataItems 
+            {userAccount.length > 0
                 ? <FlatList 
-                    data={DataItems} 
+                    data={userAccount} 
                     style={styles.items}
-                    renderItem={({item: {serviceName, login}}) => <DataItem {...{navigation, serviceName, login}} />} />
+                    keyExtractor={item => `${item.localSiteName} + ${Math.random()*Date.now()}`}
+                    renderItem={({item: {localId, localLogin, localSiteName}}) => 
+                        <DataItem {...{localId, localLogin, localSiteName, navigation}} />} />
                 : <NoData />}
         </View>
     )

@@ -8,6 +8,7 @@ import TextInputMask from 'react-native-text-input-mask';
 interface Props {
     mask?: string;
     lines?: number;
+    inputValue: string;
     onChange?: Function;
     isBigNote?: boolean;
     placeholder: string;
@@ -16,7 +17,7 @@ interface Props {
     isMultiline?: boolean;
 };
 
-export const TextField: FC<Props> = ({ placeholder, lines = 1, isRequired = false, isMultiline = false, isBigNote = false, secureText = false, mask = undefined, onChange = Function}) => {
+export const TextField: FC<Props> = ({ placeholder, lines = 1, inputValue, isRequired = false, isMultiline = false, isBigNote = false, secureText = false, mask = undefined, onChange = () => {}}) => {
     const styles = useMemo(() => getStyle(isBigNote), [isBigNote]);
 
     return (
@@ -31,6 +32,7 @@ export const TextField: FC<Props> = ({ placeholder, lines = 1, isRequired = fals
                     numberOfLines={lines}  
                     multiline={isMultiline}
                     placeholder={placeholder}
+                    defaultValue={inputValue}
                     secureTextEntry={secureText}
                     onChangeText={(e) => onChange(e)}
                     placeholderTextColor={colors.lightGray} 

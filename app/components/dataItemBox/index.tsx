@@ -6,15 +6,16 @@ import { CopyIcon } from '../../assets/svg/copyIcon';
 import { HideIcon } from '../../assets/svg/hideIcon';
 import { ShowIcon } from '../../assets/svg/showIcon';
 import { getStyle } from './styles';
+import * as Animatable from 'react-native-animatable';
 
 interface Props {
-    t: any;
+    lang: any;
     label: string;
     isHidden?: boolean;
     inputValue: string;
 };
 
-export const DataItemBox: FC<Props> = ({ isHidden = false, label = '', inputValue = '', t }) => {
+export const DataItemBox: FC<Props> = ({ isHidden = false, label = '', inputValue = '', lang }) => {
     const [isShow, setIsShow] = useState(true);
     const formatedNumber = inputValue.replace(/\B(?=(\d{4})+(?!\d))/g, " ");
     const styles = useMemo(() => getStyle(isShow, isHidden), [isShow, isHidden]);
@@ -41,9 +42,11 @@ export const DataItemBox: FC<Props> = ({ isHidden = false, label = '', inputValu
                     <Pressable onPress={() => setIsShow(!isShow)} style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1, paddingRight: 10 }]}>
                         {isHidden ? isShow || !isHidden ? <ShowIcon /> : <HideIcon /> : null}
                     </Pressable>
-                    <Pressable onPress={copyToClipboard} style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}>
-                        <CopyIcon />
-                    </Pressable>
+                    <Animatable.View animation={'fadeIn'} iterationCount={1} direction="alternate" duration={1500}>
+                        <Pressable onPress={copyToClipboard} style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1 }]}>
+                            <CopyIcon />
+                        </Pressable>
+                    </Animatable.View>
                 </View>
             </View>
         </View>
