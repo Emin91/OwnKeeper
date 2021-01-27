@@ -7,6 +7,8 @@ import { DeleteIcon } from '../../../assets/svg/deleteIcon';
 import { IStackNavigation } from '../../../entities';
 import { useDispatch } from 'react-redux';
 import { getStyle } from './styles';
+import { colors } from '../../../assets/constants/colors';
+import { EditIcon } from '../../../assets/svg/editIcon';
 
 interface Props {
     localId: number;
@@ -22,8 +24,7 @@ export const DataItem: FC<Props> = ({ localLogin = '', localSiteName = '', navig
     const dispatch = useDispatch();
 
     const onEditPress = () => {
-        // console.log('_id', localId)
-        // navigation.navigate('AddAndEditAccountView', {isEdit: true, localId});
+        navigation.navigate('AddAndEditAccountView', {isEdit: true, _id: localId, isDataView: true});
     };
 
     const onDeletePress = () => {
@@ -45,10 +46,10 @@ export const DataItem: FC<Props> = ({ localLogin = '', localSiteName = '', navig
             extrapolate: 'clamp',
         });
         return (
-            <Animated.View style={[styles.swipeLeftContainer, [{opacity: scale, backgroundColor: 'green'}]]}>
+            <Animated.View style={[styles.swipeLeftContainer, [{opacity: scale, backgroundColor: colors.jungle}]]}>
                 <Animated.View style={[styles.swipeButtonWrapper, {transform: [{scale}]}]}>
                     <Pressable hitSlop={20} onPress={onEditPress} style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1}]}>
-                        <DeleteIcon />
+                        <EditIcon />
                     </Pressable>
                 </Animated.View>
             </Animated.View>
@@ -62,7 +63,7 @@ export const DataItem: FC<Props> = ({ localLogin = '', localSiteName = '', navig
             extrapolate: 'clamp',
         });
         return (
-            <Animated.View style={[styles.swipeRightContainer, [{opacity: scale, backgroundColor: 'red'}]]}>
+            <Animated.View style={[styles.swipeRightContainer, [{opacity: scale, backgroundColor: colors.tallPoppy}]]}>
                 <Animated.View style={[styles.swipeButtonWrapper, {transform: [{scale}]}]}>
                     <Pressable hitSlop={20} onPress={onDeletePress} style={({ pressed }) => [{ opacity: pressed ? 0.5 : 1}]}>
                         <DeleteIcon />

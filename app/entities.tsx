@@ -37,3 +37,13 @@ export interface ICard {
 export interface IGeneratedPassword {
     generatedPassword: string;
 }
+
+export interface IUserAccount {
+    userAccounts: {
+        localId: number;
+        localNote: string;
+        localLogin: string;
+        localPassword: string;
+        localSiteName: string;
+    }
+}

@@ -1,4 +1,4 @@
-import React, { FC, useContext, useMemo } from 'react';
+import React, { FC, useContext, useMemo, useState } from 'react';
 import { Alert, View } from 'react-native';
 import { selectUserAccountByID } from '../../modules/redux/userAccounts/selectors';
 import { deleteUserAccount } from '../../modules/redux/userAccounts/actions';
@@ -17,19 +17,19 @@ interface Props {
 };
 
 export const DataItemFullPreview: FC<Props> = ({ route, navigation }) => {
-	const styles = useMemo(() => getStyle(), []);
 	const userAccount = useSelector((state: RootState) => selectUserAccountByID(state, route.params.localId), shallowEqual);
 	const { localLogin, localNote, localPassword, localSiteName, localId: _id } = userAccount || {localLogin: '', localNote: '', localPassword: '', localSiteName: ''};
 	const { lang }: any = useContext(LocalizationContext);
+	const styles = useMemo(() => getStyle(), []);
+	const [isShow, setIsShow] = useState(true);
 	const dispatch = useDispatch();
 
-	console.log('userAccount', userAccount)
 	const onBackPress = () => {
 		navigation.navigate('DataView');
     };
 
     const onEditPress = () => {
-		console.log('_id', _id)
+		setIsShow(true);
         navigation.navigate('AddAndEditAccountView', {isEdit: true, _id});
 	};
 	
@@ -56,16 +56,16 @@ export const DataItemFullPreview: FC<Props> = ({ route, navigation }) => {
 				onEditPress={onEditPress}
 				onDeletePress={onDeletePress} />
 			<Animatable.View animation={'flipInX'} iterationCount={1} direction="alternate" duration={800}>
-				<DataItemBox lang={lang} inputValue={localSiteName || ''} label={lang('siteName')} />
+				<DataItemBox isShow={isShow} setIsShow={setIsShow} lang={lang} inputValue={localSiteName || ''} label={lang('siteName')} />
 			</Animatable.View>
 			<Animatable.View animation={'flipInX'} iterationCount={1} direction="alternate" duration={1000}>
-				<DataItemBox lang={lang} inputValue={localLogin || ''} label={lang('userLogin')} />
+				<DataItemBox isShow={isShow} setIsShow={setIsShow} lang={lang} inputValue={localLogin || ''} label={lang('userLogin')} />
 			</Animatable.View>
 			<Animatable.View animation={'flipInX'} iterationCount={1} direction="alternate" duration={1200}>
-				<DataItemBox lang={lang} inputValue={localPassword || ''} label={lang('userPassword')} isHidden />
+				<DataItemBox isShow={isShow} setIsShow={setIsShow} lang={lang} inputValue={localPassword || ''} label={lang('userPassword')} isHidden />
 			</Animatable.View>
 			<Animatable.View animation={'flipInX'} iterationCount={1} direction="alternate" duration={1400}>
-				{localNote ? <DataItemBox lang={lang} inputValue={localNote || ''} label={lang('cardNote')} /> : null}
+				{localNote ? <DataItemBox isShow={isShow} setIsShow={setIsShow} lang={lang} inputValue={localNote || ''} label={lang('cardNote')} /> : null}
 			</Animatable.View>
 		</View>
 	);

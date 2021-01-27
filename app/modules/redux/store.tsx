@@ -1,6 +1,5 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { IGeneratedPassword } from '../../entities';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from '../saga/rootSaga';
 import rootReducer from './rootReducer';
@@ -17,7 +16,7 @@ export const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 export interface RootState {
-    RGenerator: IGeneratedPassword;
+    RGenerator: any;
     RValidation: any;
     RUserAccounts: any;
 }

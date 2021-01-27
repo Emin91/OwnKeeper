@@ -1,13 +1,13 @@
 import React, { FC, useEffect, useMemo } from 'react';
 import { View, FlatList, Keyboard } from 'react-native';
+import { selectUserAccount } from '../../modules/redux/userAccounts/selectors';
+import { shallowEqual, useSelector } from 'react-redux';
 import { MainHeader } from '../../components/mainHeader';
 import { PlusIcon } from '../../assets/svg/plusIcon';
 import { IStackNavigation } from '../../entities';
 import { DataItem } from './dataItem';
 import { getStyle } from './styles';
 import { NoData } from './noData';
-import { shallowEqual, useSelector } from 'react-redux';
-import { selectUserAccount } from '../../modules/redux/userAccounts/selectors';
 
 interface Props {
     navigation: IStackNavigation;

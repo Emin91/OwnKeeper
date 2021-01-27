@@ -6,8 +6,8 @@ export const getStyle = () => {
         container: {
             height: 50,
             width: '100%', 
-            flexDirection: 'row', 
             alignItems: 'center',
+            flexDirection: 'row', 
             paddingHorizontal: 10,
             justifyContent: 'space-between', 
             backgroundColor: colors.darlClay,

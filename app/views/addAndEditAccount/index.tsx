@@ -20,7 +20,7 @@ interface Props {
 
 export const AddAndEditAccountView: FC<Props> = ({ route, navigation }) => {
     const { lang }: any = useContext(LocalizationContext);
-    const { isEdit, _id } = route.params || { isEdit: false };
+    const { isEdit, _id, isDataView } = route.params || { isEdit: false, isDataView: false };
     const generatedPassword: string = useSelector(selectGeneratedPassword, shallowEqual);
     const userAccount = useSelector((state: RootState) => selectUserAccountByID(state, _id), shallowEqual);
     const { localLogin, localNote, localPassword, localSiteName } = userAccount || {localLogin: '', localNote: '', localPassword: '', localSiteName: ''};
@@ -33,7 +33,7 @@ export const AddAndEditAccountView: FC<Props> = ({ route, navigation }) => {
 
     const onBackPress = () => {
         dispatch(setGeneratedPassword(''));
-        navigation.navigate(isEdit ? 'DataItemFullPreview' : 'DataView');
+        navigation.navigate(isEdit && !isDataView ? 'DataItemFullPreview' : 'DataView', {localId: _id});
         Keyboard.dismiss();
     };
 
@@ -47,7 +47,7 @@ export const AddAndEditAccountView: FC<Props> = ({ route, navigation }) => {
             localPassword: (generatedPassword || fieldPassword).trim(), 
         }));
         dispatch(setGeneratedPassword(''));
-        navigation.navigate(isEdit ? 'DataItemFullPreview' : 'DataView', {_id});
+        navigation.navigate(isEdit ? 'DataItemFullPreview' : 'DataView', {localId: _id});
         Keyboard.dismiss();
     };
 
