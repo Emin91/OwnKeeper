@@ -48,3 +48,4 @@ export const CustomTabBar: FC<Props> = ({ state, descriptors, navigation }) => {
 };
 
 {/* {options.tabBarIcon({color: isFocused ? '#3192EC' : ''})} This is icon */}
+// {options.tabBarIcon({autoPlay: state.index === index ? true : false})}

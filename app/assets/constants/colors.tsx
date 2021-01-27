@@ -10,11 +10,13 @@ export const colors = {
     violet: "#6112f8",
     surfie: "#0C7979",
     silver: "#C5C5C5",
+    jungle: '#27ae60',
     mariner: "#2980b9",
     boulder: "#787878",
     manatee: "#909098",
     darlClay: "#1D1F2E", 
     bluewood: "#314256",
     lightGray: "#828282",
+    tallPoppy: '#c0392b',
     pictionBlue: "#3192EC",
 }

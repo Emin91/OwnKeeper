@@ -14,3 +14,9 @@ export const store = createStore(
 );
 
 sagaMiddleware.run(rootSaga);
+
+export interface RootState {
+    RGenerator: any;
+    RValidation: any;
+    RUserAccounts: any;
+}
