@@ -29,6 +29,7 @@ export const StackCardsNavigator: FC = () => {
         </Stack.Navigator>
     );
 };
+
 export const StackDataNavigator: FC = () => {
     return (
         <Stack.Navigator initialRouteName="DataView">
@@ -38,6 +39,7 @@ export const StackDataNavigator: FC = () => {
         </Stack.Navigator>
     );
 };
+
 export const StackNotesNavigator: FC = () => {
     return (
         <Stack.Navigator initialRouteName="NotesView">
@@ -45,6 +47,7 @@ export const StackNotesNavigator: FC = () => {
         </Stack.Navigator>
     );
 };
+
 export const StackSettingsNavigator: FC = () => {
     return (
         <Stack.Navigator initialRouteName="SettingsView">
