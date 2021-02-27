@@ -7,6 +7,7 @@ import { keyPad } from './keyPad';
 import { colors } from '../../assets/constants/colors';
 import { CirlceIcon } from '../../assets/svg/cirleIcon';
 import * as Animatable from 'react-native-animatable';
+import FingerprintScanner from 'react-native-fingerprint-scanner';
 
 const ROW_COUNT = 4;
 const COLUMNS_COUNT = keyPad.length / ROW_COUNT;
@@ -15,6 +16,7 @@ export const PinCodeView: FC = () => {
     const styles = useMemo(() => getStyle(), []);
     const { lang }: any = useContext(LocalizationContext); 
     const [pinCodeValue, setPinCodeValue] = useState('');
+    const [isAuthentication, setIsAuthentication] = useState(false);
     const [pin, setPin] = useState(Array(4).fill(pinCodeValue));
 
     const checkPinCode = useMemo(() => {
@@ -60,10 +62,20 @@ export const PinCodeView: FC = () => {
         setPin(pinCode);
     };
 
-    const onButtonsPress = (value: string) => {
+    const onButtonsPress = async (value: string) => {
         switch(value) {
             case 'FINGER':
-                console.log('Finger scanner');
+                const isBiometric = await FingerprintScanner.authenticate({title: 'Use scanner', subTitle: 'You can use biometric scanner.'});
+                console.log('isBiometric', isBiometric)
+                // FingerprintScanner
+                // .authenticate({ description: 'Scan your fingerprint on the device scanner to continue' })
+                // .then((data) => {
+                //     console.log(".then ~ data", data)
+                //     // setIsAuthentication(data)
+                // })
+                // .catch((error) => {
+                //     console.log('biometryType-----------', error);
+                // });	
                 break;
             case 'CLEARE':
                 onPressClear();
