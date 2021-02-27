@@ -1,5 +1,5 @@
 import { RootState } from '../store';
 
-export const selectBorderColor = (state: RootState) => {
-    return state.RValidation.borderColor;
+export const selectAuthtenticationState = (state: RootState) => {
+    return state.RValidation.isAuthorization;
 };

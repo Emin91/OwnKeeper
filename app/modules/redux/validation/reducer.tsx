@@ -1,16 +1,16 @@
-export interface borderColorI {
-    borderColor: String;
+export interface authI {
+    isAuthorization: boolean;
 };
 
 export const initState = {
-    borderColor: '#909098',
+    isAuthorization: false,
 };
 
-export const RValidation = (state: borderColorI = initState, action: { type: string, payload: any }) => {
+export const RValidation = (state: authI = initState, action: { type: string, payload: any }) => {
     const { type, payload } = action;
     switch (type) {
-        case 'SET_BORDER_COLOR':
-            return { borderColor: payload };
+        case 'SET_AUTHENTICATION_STATE':
+            return { isAuthorization: payload };
         default:
             return state;
     };

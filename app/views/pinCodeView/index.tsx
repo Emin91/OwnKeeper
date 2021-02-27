@@ -1,5 +1,5 @@
-import React, { FC, useContext, useMemo, useState} from 'react';
-import { View, Text, Pressable } from 'react-native';
+import React, { FC, useContext, useEffect, useMemo, useState} from 'react';
+import { View, Text, Pressable, Alert } from 'react-native';
 import { LocalizationContext } from '../../modules/language';
 import { LogoIcon } from '../../assets/svg/logo';
 import { getStyle } from './styles';
@@ -8,27 +8,40 @@ import { colors } from '../../assets/constants/colors';
 import { CirlceIcon } from '../../assets/svg/cirleIcon';
 import * as Animatable from 'react-native-animatable';
 import FingerprintScanner from 'react-native-fingerprint-scanner';
+import { IStackNavigation } from '../../entities';
+import { useNavigation } from '@react-navigation/native';
+import { setAuthenticationState } from '../../modules/redux/validation/actions';
+import { useDispatch } from 'react-redux';
+
+
+interface Props {
+    navigation: IStackNavigation;
+};
 
 const ROW_COUNT = 4;
 const COLUMNS_COUNT = keyPad.length / ROW_COUNT;
 
-export const PinCodeView: FC = () => {
+export const PinCodeView: FC<Props> = ({navigation}) => {
     const styles = useMemo(() => getStyle(), []);
     const { lang }: any = useContext(LocalizationContext); 
     const [pinCodeValue, setPinCodeValue] = useState('');
     const [isAuthentication, setIsAuthentication] = useState(false);
     const [pin, setPin] = useState(Array(4).fill(pinCodeValue));
-
+    const dispatch = useDispatch();
+    
     const checkPinCode = useMemo(() => {
         let dotsColor;
         if(Number(pin.join('')) == 1212) {
             console.log('Pass is correct')
+            setTimeout(() => {
+                dispatch(setAuthenticationState(true))
+            }, 250);
             dotsColor = colors.green;
         } else if(pin.join('').length == 4) {
             dotsColor = colors.tallPoppy;
             setTimeout(() => {
                 setPin(Array(4).fill(''));
-            }, 700);
+            }, 500);
             console.log('Pass is not correct')
         }
         return dotsColor;
@@ -62,20 +75,20 @@ export const PinCodeView: FC = () => {
         setPin(pinCode);
     };
 
-    const onButtonsPress = async (value: string) => {
+    const onFingerScannerPress = async () => {
+        FingerprintScanner
+            .authenticate({ title: 'Авторизация', subTitle: 'Воспользуйтесь одним из способов для авторизации', description: '', cancelButton: 'Cancel', onAttempt: () => alert('Try again') })
+            .then((data) => {
+                dispatch(setAuthenticationState(true));
+            })
+            .catch((error) => {
+                console.log(error)
+        });
+    }
+    const onButtonsPress = (value: string) => {
         switch(value) {
             case 'FINGER':
-                const isBiometric = await FingerprintScanner.authenticate({title: 'Use scanner', subTitle: 'You can use biometric scanner.'});
-                console.log('isBiometric', isBiometric)
-                // FingerprintScanner
-                // .authenticate({ description: 'Scan your fingerprint on the device scanner to continue' })
-                // .then((data) => {
-                //     console.log(".then ~ data", data)
-                //     // setIsAuthentication(data)
-                // })
-                // .catch((error) => {
-                //     console.log('biometryType-----------', error);
-                // });	
+                onFingerScannerPress();
                 break;
             case 'CLEARE':
                 onPressClear();
@@ -86,9 +99,13 @@ export const PinCodeView: FC = () => {
         };
     };
 
+    useEffect(() => {
+        return FingerprintScanner.release();
+    }, []);
+
     return (
         <View style={styles.container}>
-            <Animatable.View animation={'flipInX'} iterationCount={1} direction="alternate" duration={1500} style={styles.logoWrapper}>
+            <Animatable.View animation={'flipInX'} iterationCount={1} direction="alternate" duration={1200} style={styles.logoWrapper}>
                 <LogoIcon width={127} height={58} />
             </Animatable.View>
             <View style={styles.pinWrapper}>
@@ -105,7 +122,7 @@ export const PinCodeView: FC = () => {
                     Array(ROW_COUNT).fill(null).map((_, index) => {
                         const startIndex = index * COLUMNS_COUNT;
                         return (
-                            <View key={index} style={styles.symbolsRow}>
+                            <View key={index} style={[styles.symbolsRow, ]}>
                                 {keyPad.slice(startIndex, startIndex + COLUMNS_COUNT).map(({ value, component = value }) => {
                                     return (
                                         <Pressable 
