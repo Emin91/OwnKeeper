@@ -101,7 +101,7 @@ export const PinCodeView: FC = () => {
                                             key={value}
                                             onPress={() => onButtonsPress(value)}
                                             style={({pressed}) => [styles.symbolView, {opacity: pressed ? 0.5 : 1, backgroundColor: pressed ? colors.bluewood : colors.clay}]}>
-                                                <Text style={[styles.btnText, {marginRight: value == 'CLEARE' ? 10 : 0}]}>{component}</Text>
+                                                <Text style={[styles.btnText, {marginRight: value == 'CLEARE' ? 10 : 0, opacity: checkPinCode === colors.green ? 0.3 : 1}]}>{component}</Text>
                                         </Pressable>
                                     )}
                                 )}
