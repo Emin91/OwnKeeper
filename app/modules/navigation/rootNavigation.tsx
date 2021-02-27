@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { View } from 'react-native';
 import { TabNavigator } from './tabBarNavigation';
+import { View } from 'react-native';
 
 export const RootNavigation: FC = () => {
   return (
     <View style={{flex: 1}}>
-      <NavigationContainer>
+      <NavigationContainer >
         <TabNavigator />
       </NavigationContainer >
     </View>
