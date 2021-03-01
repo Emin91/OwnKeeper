@@ -14,7 +14,7 @@ export const getStyle = () => {
             height: '100%',
             borderRadius: 6,
             flexDirection: 'row',
-            backgroundColor: colors.bluewood,
+            backgroundColor: colors.blueWood,
         },
         iconWrapper: {
             flex: 0.2,

@@ -14,5 +14,5 @@ export const keyPad = [
     { value: '9' },
     { value: 'FINGER', component: <FingerIcon />},
     { value: '0' },
-    { value: 'CLEARE', component: <ClearIcon />},
+    { value: 'CLEAR', component: <ClearIcon />},
 ];

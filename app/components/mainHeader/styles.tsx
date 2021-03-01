@@ -10,7 +10,7 @@ export const getStyle = () => {
             flexDirection: 'row', 
             paddingHorizontal: 10,
             justifyContent: 'space-between', 
-            backgroundColor: colors.darlClay,
+            backgroundColor: colors.darkClay,
         },
     });
     return styles;

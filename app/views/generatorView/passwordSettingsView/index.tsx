@@ -63,7 +63,7 @@ export const GeneratePasswordSettings: FC<Props> = ({
                     style={{width: '85%'}}
                     thumbTintColor={colors.white}
                     minimumTrackTintColor={colors.surfie}
-                    maximumTrackTintColor={colors.darlClay}
+                    maximumTrackTintColor={colors.darkClay}
                     onValueChange={(value) => setPassLength(value)} 
                     />
                 <Text style={styles.title}>32</Text>

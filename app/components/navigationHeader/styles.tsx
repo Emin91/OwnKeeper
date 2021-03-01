@@ -10,7 +10,7 @@ export const getStyle = () => {
             alignItems: 'center',
             paddingHorizontal: 10,
             justifyContent: 'center', 
-            backgroundColor: colors.darlClay,
+            backgroundColor: colors.darkClay,
         },
         backIcon: {
             left: 10,
