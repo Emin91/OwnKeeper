@@ -14,7 +14,7 @@ export const getStyle = () => {
             borderRadius: 6,
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: colors.bluewood,
+            backgroundColor: colors.blueWood,
         },
         copyButton: {
             right: 12,
@@ -42,7 +42,7 @@ export const getStyle = () => {
             width: '100%',
             borderRadius: 6,
             alignItems: 'center',
-            backgroundColor: colors.bluewood,
+            backgroundColor: colors.blueWood,
         },
         itemRow: {
             flexDirection: 'row',

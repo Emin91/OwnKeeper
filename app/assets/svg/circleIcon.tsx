@@ -1,7 +1,7 @@
 import React, { FC } from "react"
 import Svg, { Circle } from "react-native-svg"
 
-export const CirlceIcon: FC<{ width?: number, height?: number, color?: string }> = ({ color }) => {
+export const CircleIcon: FC<{ width?: number, height?: number, color?: string }> = ({ color }) => {
 	return (
 		<Svg
 			width={14}

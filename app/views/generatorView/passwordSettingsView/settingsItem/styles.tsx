@@ -9,7 +9,7 @@ export const getStyle = () => {
             width: '100%',
             borderRadius: 6,
             alignItems: 'center',
-            backgroundColor: colors.bluewood,
+            backgroundColor: colors.blueWood,
         },
         rowWrapper: {
             marginBottom: 2,

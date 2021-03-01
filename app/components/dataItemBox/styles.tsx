@@ -19,7 +19,7 @@ export const getStyle = (isShow: boolean, isHidden: boolean) => {
             paddingLeft: 12,
             borderRadius: 6,
             justifyContent: 'center',
-            backgroundColor: colors.bluewood,
+            backgroundColor: colors.blueWood,
         },
         label: {
             fontSize: 14,

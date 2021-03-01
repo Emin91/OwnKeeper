@@ -1,18 +1,17 @@
-import React, { FC, useContext, useEffect, useMemo, useState} from 'react';
-import { View, Text, Pressable, Alert } from 'react-native';
+import React, { FC, useContext, useEffect, useMemo, useState } from 'react';
+import { View, Text, Pressable } from 'react-native';
+import { setAuthenticationState } from '../../modules/redux/validation/actions';
+import { selectBiometricType } from '../../modules/redux/userInfo/selectors';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import FingerprintScanner from 'react-native-fingerprint-scanner';
 import { LocalizationContext } from '../../modules/language';
+import { CircleIcon } from '../../assets/svg/circleIcon';
+import { colors } from '../../assets/constants/colors';
+import * as Animatable from 'react-native-animatable';
+import { IStackNavigation } from '../../entities';
 import { LogoIcon } from '../../assets/svg/logo';
 import { getStyle } from './styles';
 import { keyPad } from './keyPad';
-import { colors } from '../../assets/constants/colors';
-import { CirlceIcon } from '../../assets/svg/cirleIcon';
-import * as Animatable from 'react-native-animatable';
-import FingerprintScanner from 'react-native-fingerprint-scanner';
-import { IStackNavigation } from '../../entities';
-import { useNavigation } from '@react-navigation/native';
-import { setAuthenticationState } from '../../modules/redux/validation/actions';
-import { useDispatch } from 'react-redux';
-
 
 interface Props {
     navigation: IStackNavigation;
@@ -21,36 +20,30 @@ interface Props {
 const ROW_COUNT = 4;
 const COLUMNS_COUNT = keyPad.length / ROW_COUNT;
 
-export const PinCodeView: FC<Props> = ({navigation}) => {
-    const styles = useMemo(() => getStyle(), []);
-    const { lang }: any = useContext(LocalizationContext); 
-    const [pinCodeValue, setPinCodeValue] = useState('');
-    const [isAuthentication, setIsAuthentication] = useState(false);
-    const [pin, setPin] = useState(Array(4).fill(pinCodeValue));
+export const PinCodeView: FC<Props> = () => {
     const dispatch = useDispatch();
-    
+    const styles = useMemo(() => getStyle(), []);
+    const [pinCodeValue, setPinCodeValue] = useState('');
+    const { lang }: any = useContext(LocalizationContext);
+    const [pin, setPin] = useState(Array(4).fill(pinCodeValue));
+    const isBiometric: boolean = useSelector(selectBiometricType, shallowEqual);
+
     const checkPinCode = useMemo(() => {
         let dotsColor;
-        if(Number(pin.join('')) == 1212) {
-            console.log('Pass is correct')
-            setTimeout(() => {
-                dispatch(setAuthenticationState(true))
-            }, 250);
+        if (Number(pin.join('')) == 1212) {
+            setTimeout(() => {dispatch(setAuthenticationState(true))}, 250);
             dotsColor = colors.green;
-        } else if(pin.join('').length == 4) {
+        } else if (pin.join('').length == 4) {
             dotsColor = colors.tallPoppy;
-            setTimeout(() => {
-                setPin(Array(4).fill(''));
-            }, 500);
-            console.log('Pass is not correct')
-        }
+            setTimeout(() => {setPin(Array(4).fill(''))}, 500);
+        };
         return dotsColor;
     }, [pin]);
-    
+
     const onPressNumbers = (btn: string) => {
         let pinCode = [...pin];
-        for(var i = 0; i < pinCode.length; i++) {
-            if(pinCode[i] == '') {
+        for (var i = 0; i < pinCode.length; i++) {
+            if (pinCode[i] == '') {
                 pinCode[i] = btn;
                 break;
             } else {
@@ -64,8 +57,8 @@ export const PinCodeView: FC<Props> = ({navigation}) => {
 
     const onPressClear = () => {
         let pinCode = [...pin];
-        for(var i = pinCode.length - 1; i >= 0; i--) {
-            if(pinCode[i] != '') {
+        for (var i = pinCode.length - 1; i >= 0; i--) {
+            if (pinCode[i] != '') {
                 pinCode[i] = '';
                 break;
             } else {
@@ -77,25 +70,26 @@ export const PinCodeView: FC<Props> = ({navigation}) => {
 
     const onFingerScannerPress = async () => {
         FingerprintScanner
-            .authenticate({ title: 'Авторизация', subTitle: 'Воспользуйтесь одним из способов для авторизации', description: '', cancelButton: 'Cancel', onAttempt: () => alert('Try again') })
-            .then((data) => {
-                dispatch(setAuthenticationState(true));
+            .authenticate({
+                title: 'Авторизация',
+                subTitle: 'Воспользуйтесь одним два из способов для авторизации',
+                onAttempt: () => alert('Try again')
             })
-            .catch((error) => {
-                console.log(error)
-        });
-    }
+            .then(() => {dispatch(setAuthenticationState(true))})
+            .catch((error) => {console.log(error)});
+    };
+
     const onButtonsPress = (value: string) => {
-        switch(value) {
+        switch (value) {
             case 'FINGER':
                 onFingerScannerPress();
                 break;
-            case 'CLEARE':
+            case 'CLEAR':
                 onPressClear();
                 break;
-            default: 
-                onPressNumbers(value);  
-                break;  
+            default:
+                onPressNumbers(value);
+                break;
         };
     };
 
@@ -110,27 +104,28 @@ export const PinCodeView: FC<Props> = ({navigation}) => {
             </Animatable.View>
             <View style={styles.pinWrapper}>
                 <Text style={styles.pinText}>{lang('enterPinCode')}</Text>
-                <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+                <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                     {pin.map((item, index) => {
-                        let color = item != '' ? colors.pictionBlue : colors.bluewood
-                        return <View key={index} style={{paddingHorizontal: 5}}><CirlceIcon color={checkPinCode || color}/></View>
+                        let color = item != '' ? colors.pictionBlue : colors.blueWood;
+                        return <View key={index} style={{ paddingHorizontal: 5 }}><CircleIcon color={checkPinCode || color} /></View>
                     })}
                 </View>
             </View>
             <View style={styles.buttonsWrapper}>
-                {
-                    Array(ROW_COUNT).fill(null).map((_, index) => {
+                {Array(ROW_COUNT).fill(null).map((_, index) => {
                         const startIndex = index * COLUMNS_COUNT;
                         return (
-                            <View key={index} style={[styles.symbolsRow, ]}>
+                            <View key={index} style={[styles.symbolsRow,]}>
                                 {keyPad.slice(startIndex, startIndex + COLUMNS_COUNT).map(({ value, component = value }) => {
                                     return (
-                                        <Pressable 
-                                            disabled={pin.join('').length >= 4 && value != 'CLEARE' && value != 'FINGER' ? true : false}
+                                        <Pressable
                                             key={value}
+                                            disabled={pin.join('').length >= 4 && value != 'CLEAR' && value != 'FINGER' ? true : false}
                                             onPress={() => onButtonsPress(value)}
-                                            style={({pressed}) => [styles.symbolView, {opacity: pressed ? 0.5 : 1, backgroundColor: pressed ? colors.bluewood : colors.clay}]}>
-                                                <Text style={[styles.btnText, {marginRight: value == 'CLEARE' ? 10 : 0, opacity: checkPinCode === colors.green ? 0.3 : 1}]}>{component}</Text>
+                                            style={({ pressed }) => [styles.symbolView, { opacity: pressed ? 0.5 : 1, backgroundColor: pressed ? colors.blueWood : colors.clay }]}>
+                                            <Text style={[styles.btnText, { marginRight: value == 'CLEAR' ? 10 : 0, opacity: checkPinCode === colors.green ? 0.3 : 1 }]}>
+                                                {isBiometric || value != 'FINGER' ? component : null}
+                                            </Text>
                                         </Pressable>
                                     )}
                                 )}
