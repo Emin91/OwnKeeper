@@ -1,17 +1,31 @@
 import React, { FC } from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
 import { CardItemFullPreview } from '../../views/cardItemFullPreview';
 import { DataItemFullPreview } from '../../views/dataItemFullPreview';
 import { AddAndEditAccountView } from '../../views/addAndEditAccount';
 import { AddAndEditCardView } from '../../views/addAndEditCardView';
+import { selectBiometricType } from '../redux/appState/selectors';
+import { FingerStatusView } from '../../views/fingerStatusView';
+import { createStackNavigator } from '@react-navigation/stack';
 import { GeneratorView } from '../../views/generatorView';
+import { shallowEqual, useSelector } from 'react-redux';
 import { SettingsView } from '../../views/settingsView';
+import { PinCodeView } from '../../views/pinCodeView';
 import { NotesView } from '../../views/notesView';
 import { DataView } from '../../views/dataView';
 import { CardView } from '../../views/cardView';
-import { PinCodeView } from '../../views/pinCodeView';
 
 const Stack = createStackNavigator();
+
+export const StackAuthNavigator: FC = () => {
+    const isBiometric: boolean = useSelector(selectBiometricType, shallowEqual);
+
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={isBiometric ? 'FingerStatusView' : 'PinCodeView'}>
+            <Stack.Screen name="FingerStatusView" component={FingerStatusView} />
+            <Stack.Screen name="PinCodeView" component={PinCodeView} />
+        </Stack.Navigator>
+    );
+};
 
 export const StackGeneratorNavigator: FC = () => {
     return (
@@ -51,16 +65,8 @@ export const StackNotesNavigator: FC = () => {
 
 export const StackSettingsNavigator: FC = () => {
     return (
-        <Stack.Navigator initialRouteName="SettingsView" screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName="SettingsView" screenOptions={{ headerShown: false }}>
             <Stack.Screen name="SettingsView" component={SettingsView} />
-        </Stack.Navigator>
-    );
-};
-
-export const StackAuthNavigator: FC = () => {
-    return (
-        <Stack.Navigator initialRouteName="PinCodeView" screenOptions={{headerShown: false}}>
-            <Stack.Screen name="PinCodeView" component={PinCodeView} />
         </Stack.Navigator>
     );
 };

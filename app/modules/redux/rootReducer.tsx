@@ -2,10 +2,10 @@ import { combineReducers } from 'redux';
 import { RUserAccounts } from './userAccounts/reducer';
 import { RValidation } from './validation/reducer';
 import { RGenerator } from './generator/reducer';
-import { RUserInfo } from './userInfo/reducer';
+import { RAppState } from './appState/reducer';
 
 const rootReducer = combineReducers({
-    RUserInfo,
+    RAppState,
     RGenerator,
     RValidation,
     RUserAccounts,

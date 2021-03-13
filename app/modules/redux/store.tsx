@@ -2,7 +2,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { userAccountsI } from './userAccounts/reducer';
 import { generatorI } from './generator/reducer';
-import { userInfoI } from './userInfo/reducer';
+import { appStateI } from './appState/reducer';
 import createSagaMiddleware from 'redux-saga';
 import { authI } from './validation/reducer';
 import rootSaga from '../saga/rootSaga';
@@ -20,7 +20,7 @@ sagaMiddleware.run(rootSaga);
 
 export interface RootState {
     RValidation: authI;
-    RUserInfo: userInfoI;
+    RAppState: appStateI;
     RGenerator: generatorI;
     RUserAccounts: userAccountsI;
 }

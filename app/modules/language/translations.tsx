@@ -37,6 +37,10 @@ export const translations = {
         noPassword: 'Don\'t have a password?',
         passwordCreator: 'Password creator',
         addAccount: 'Add Account',
-        enterPinCode: 'Enter pin code'
+        enterPinCode: 'Enter pin code',
+        createPinCode: 'Create pin code',
+        switchToKeyboard: 'Switch to keyboard',
+        authorization: 'Authorization', 
+        chooseAuthType: 'Use one of the methods for authorization',
     }
 };
