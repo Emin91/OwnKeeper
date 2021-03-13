@@ -9,6 +9,12 @@ export const getStyle = () => {
             justifyContent: 'center',
             backgroundColor: colors.clay,
         },
+        logoWrapper: {
+            flex: 0.2, 
+            paddingTop: 20, 
+            alignItems: 'center',
+            justifyContent: 'center', 
+        },
     });
     return styles;
 };
